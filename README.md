@@ -20,22 +20,34 @@
             margin: 0 auto;
             overflow-x: hidden;
             line-height: 1.5;
-            -webkit-font-smoothing: antialiased; /* Smoother text on iOS */
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Neon text */
-        .neon-text {
+        /* Neon bubble text */
+        .neon-bubble {
+            font-size: 2.2em; /* Scaled down for iPhone fit */
+            font-weight: bold;
             color: #0ff;
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+            text-shadow: 
+                0 0 5px #0ff, 
+                0 0 10px #0ff, 
+                0 0 20px #0ff, 
+                0 0 30px #0ff,
+                -2px -2px 0 #ff00ff, 
+                2px -2px 0 #ff00ff, 
+                -2px 2px 0 #ff00ff, 
+                2px 2px 0 #ff00ff; /* Bubble outline */
             animation: glow 1.5s infinite alternate;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         @keyframes glow {
-            from { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff; }
-            to { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff; }
+            from { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, -2px -2px 0 #ff00ff, 2px -2px 0 #ff00ff, -2px 2px 0 #ff00ff, 2px 2px 0 #ff00ff; }
+            to { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff, -2px -2px 0 #ff00ff, 2px -2px 0 #ff00ff, -2px 2px 0 #ff00ff, 2px 2px 0 #ff00ff; }
         }
 
-        /* Homepage */
+        /* Homepage - Neon Vibes */
         #homepage {
             height: 100vh;
             display: flex;
@@ -44,34 +56,56 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a); /* Subtle gradient */
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a0040 50%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
+        #homepage::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, rgba(255, 0, 255, 0.1) 50%, transparent 70%);
+            animation: pulse-bg 6s infinite ease-in-out;
+        }
+
+        @keyframes pulse-bg {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 0.8; }
         }
 
         p {
             font-size: 1.2em;
-            color: #ccc;
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
             margin-bottom: 25px;
+            font-style: italic;
         }
 
         button {
-            background: #ff00ff;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
             color: #fff;
             border: none;
-            padding: 15px 35px;
-            font-size: 1.2em;
-            border-radius: 30px;
+            padding: 15px 25px; /* Adjusted for iPhone fit */
+            font-size: 1.1em; /* Smaller text for better fit */
+            border-radius: 40px;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
+            position: relative;
+            z-index: 1;
+            white-space: nowrap; /* Prevent text wrapping */
         }
 
         button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #ff00ff;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #ff00ff, 0 0 40px #00ffff;
+            background: linear-gradient(45deg, #00ffff, #ff00ff); /* Reverse gradient on hover */
         }
 
         /* Cipher Room */
@@ -79,25 +113,35 @@
             display: none;
             padding: 20px;
             min-height: 100vh;
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            background: linear-gradient(135deg, #1a1a1a, #2a0040);
         }
 
+        .neon-text {
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 25px #0ff, 0 0 40px #0ff;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        /* Cooler Text Box */
         textarea {
             width: 100%;
             height: 180px;
-            background: #333;
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.9), rgba(0, 255, 255, 0.1));
             color: #fff;
-            border: 2px solid #0ff;
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 1.1em;
+            border: 3px solid #ff00ff;
+            border-radius: 20px;
+            padding: 20px;
+            font-size: 1.2em;
             resize: none;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-            transition: border-color 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6), inset 0 0 15px rgba(0, 255, 255, 0.4);
+            transition: all 0.3s ease;
+            font-style: italic;
         }
 
         textarea:focus {
-            border-color: #ff00ff;
+            border-color: #00ffff;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.8), inset 0 0 20px rgba(255, 0, 255, 0.5);
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.9), rgba(255, 0, 255, 0.1));
             outline: none;
         }
 
@@ -109,6 +153,7 @@
             color: #0ff;
             font-size: 1.1em;
             line-height: 1.6;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
         }
 
         /* Chat simulation */
@@ -117,6 +162,7 @@
             font-size: 0.9em;
             color: #ccc;
             text-align: center;
+            font-style: italic;
         }
 
         /* Rapping animation */
@@ -142,17 +188,17 @@
     </style>
 </head>
 <body>
-    <!-- Homepage -->
+    <!-- Homepage - Neon Bubble Vibes -->
     <div id="homepage">
-        <h1 class="neon-text">FreestyleFriendzy</h1>
-        <p>Spit bars. Connect raw. No rules.</p>
-        <button onclick="enterCipher()">Join the Cipher</button>
+        <h1 class="neon-bubble">FreestyleFriendzy</h1>
+        <p>Spit Bars. Ignite Sparks. Rule the Dark.</p>
+        <button id="enter-btn">Enter the Cipher</button>
     </div>
 
     <!-- Cipher Room -->
     <div id="cipher-room">
         <h2 class="neon-text">Cipher Room</h2>
-        <textarea id="freestyle-input" placeholder="Drop your bars here..."></textarea>
+        <textarea id="freestyle-input" placeholder="Drop your slickest bars..."></textarea>
         <button onclick="findFriendzy()">Find a Friendzy</button>
         <div id="chat-status"></div>
         <div class="mic-animation" id="mic-animation"></div>
@@ -265,12 +311,12 @@
         ];
 
         // Page navigation
-        function enterCipher() {
+        document.getElementById('enter-btn').addEventListener('click', function() {
             document.getElementById('homepage').style.display = 'none';
             document.getElementById('cipher-room').style.display = 'block';
-        }
+        });
 
-        // Find a Friendzy logic with smoother chat simulation
+        // Find a Friendzy logic with more real chat simulation
         function findFriendzy() {
             const input = document.getElementById('freestyle-input').value;
             const output = document.getElementById('freestyle-output');
@@ -286,26 +332,34 @@
             const button = document.querySelector('#cipher-room button');
             button.disabled = true;
 
-            // Smooth chat simulation
+            // Enhanced chat simulation
             output.innerHTML = `<p>You: "${input}"</p>`;
-            status.innerText = 'Sending to Friendzy...';
+            status.innerText = 'Bars sent...';
             micAnimation.style.display = 'block';
 
             setTimeout(() => {
-                status.innerText = 'Friendzy’s vibin’ on it...';
-            }, 1000);
+                status.innerText = 'Friendzy’s in the zone...';
+            }, 800);
 
             setTimeout(() => {
-                status.innerText = 'Friendzy’s spittin’ back...';
-            }, 2500);
+                status.innerText = 'They’re feelin’ your flow...';
+            }, 1800);
+
+            setTimeout(() => {
+                status.innerText = 'Droppin’ bars back...';
+            }, 3000);
 
             setTimeout(() => {
                 const randomFreestyle = freestylePool[Math.floor(Math.random() * freestylePool.length)];
                 output.innerHTML = `<p>You: "${input}"</p><p>Friendzy: "${randomFreestyle}"</p>`;
+                status.innerText = 'Bars received!';
+            }, 4200);
+
+            setTimeout(() => {
                 status.innerText = '';
                 micAnimation.style.display = 'none';
                 button.disabled = false;
-            }, 4500); // 4.5 seconds total—smooth, not too long
+            }, 5000); // 5 seconds total—realistic flow
         }
     </script>
 </body>
