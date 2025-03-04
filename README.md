@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>FreestyleFriendzy</title>
     <style>
         /* Reset and iPhone optimization */
@@ -15,9 +15,8 @@
         body {
             background: #1a1a1a;
             color: #fff;
-            width: 100%;
-            max-width: 375px; /* iPhone screen width */
-            margin: 0 auto;
+            width: 100%; /* Full width */
+            min-height: 100vh; /* Ensure it fills height */
             overflow-x: hidden;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
@@ -25,7 +24,7 @@
 
         /* Neon bubble text */
         .neon-bubble {
-            font-size: 2.2em; /* Scaled down for iPhone fit */
+            font-size: 2.4em; /* Slightly larger for impact */
             font-weight: bold;
             color: #0ff;
             text-shadow: 
@@ -47,15 +46,16 @@
             to { text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff, -2px -2px 0 #ff00ff, 2px -2px 0 #ff00ff, -2px 2px 0 #ff00ff, 2px 2px 0 #ff00ff; }
         }
 
-        /* Homepage - Neon Vibes */
+        /* Homepage - Full-Screen Neon Vibes */
         #homepage {
-            height: 100vh;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 15px; /* Reduced padding for more content space */
             background: linear-gradient(135deg, #1a1a1a 0%, #2a0040 50%, #1a1a1a 100%);
             position: relative;
             overflow: hidden;
@@ -79,10 +79,10 @@
         }
 
         p {
-            font-size: 1.2em;
+            font-size: 1.3em; /* Slightly larger for readability */
             color: #ff00ff;
             text-shadow: 0 0 10px #ff00ff;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-style: italic;
         }
 
@@ -90,8 +90,8 @@
             background: linear-gradient(45deg, #ff00ff, #00ffff);
             color: #fff;
             border: none;
-            padding: 15px 25px; /* Adjusted for iPhone fit */
-            font-size: 1.1em; /* Smaller text for better fit */
+            padding: 15px 30px; /* Adjusted for fit */
+            font-size: 1.2em; /* Readable but fits */
             border-radius: 40px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
@@ -99,20 +99,21 @@
             box-shadow: 0 0 15px #ff00ff, 0 0 25px #00ffff;
             position: relative;
             z-index: 1;
-            white-space: nowrap; /* Prevent text wrapping */
+            white-space: nowrap;
         }
 
         button:hover {
             transform: scale(1.1);
             box-shadow: 0 0 25px #ff00ff, 0 0 40px #00ffff;
-            background: linear-gradient(45deg, #00ffff, #ff00ff); /* Reverse gradient on hover */
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
         }
 
-        /* Cipher Room */
+        /* Cipher Room - Full-Screen */
         #cipher-room {
             display: none;
-            padding: 20px;
-            min-height: 100vh;
+            width: 100vw; /* Full viewport width */
+            min-height: 100vh; /* Full viewport height */
+            padding: 15px; /* Reduced padding for more space */
             background: linear-gradient(135deg, #1a1a1a, #2a0040);
         }
 
@@ -124,8 +125,8 @@
 
         /* Cooler Text Box */
         textarea {
-            width: 100%;
-            height: 180px;
+            width: 100%; /* Full width of container */
+            height: 200px; /* Slightly taller for better fit */
             background: linear-gradient(135deg, rgba(51, 51, 51, 0.9), rgba(0, 255, 255, 0.1));
             color: #fff;
             border: 3px solid #ff00ff;
@@ -154,6 +155,7 @@
             font-size: 1.1em;
             line-height: 1.6;
             box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            width: 100%; /* Full width */
         }
 
         /* Chat simulation */
@@ -188,14 +190,14 @@
     </style>
 </head>
 <body>
-    <!-- Homepage - Neon Bubble Vibes -->
+    <!-- Homepage - Full-Screen Neon Bubble Vibes -->
     <div id="homepage">
         <h1 class="neon-bubble">FreestyleFriendzy</h1>
         <p>Spit Bars. Ignite Sparks. Rule the Dark.</p>
         <button id="enter-btn">Enter the Cipher</button>
     </div>
 
-    <!-- Cipher Room -->
+    <!-- Cipher Room - Full-Screen -->
     <div id="cipher-room">
         <h2 class="neon-text">Cipher Room</h2>
         <textarea id="freestyle-input" placeholder="Drop your slickest bars..."></textarea>
